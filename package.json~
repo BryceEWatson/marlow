@@ -13,15 +13,13 @@
     "type": "git",
     "url": "git+https://github.com/bryceewatson/marlow-tools.git"
   },
-  "author": "Bryce Watson <BryceEWatson@gmail.com>, Kelvin Watson <KelvinCSWatson@gmail.com>",
+  "author": "Bryce Watson <BryceEWatson@gmail.com>",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/bryceewatson/marlow-tools/issues"
   },
   "homepage": "https://github.com/bryceewatson/marlow-tools#readme",
   "dependencies": {
-    "cli": "^0.11.1",
-    "npmlog": "^2.0.2",
     "open": "0.0.5"
   }
 }
