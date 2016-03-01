@@ -23,16 +23,15 @@ var cd = 'cd '+projectName+' && ';
 var npmInstall = 'npm install';
 
 
-if (!args.length){
-  //Open a web browser window.
+if (!args.length){  //Open a web browser window.
   var open = require('open');
   open('http://www.markojs.com');
   exit(1);
-} else if(args.length > 1){
+} else if(args.length > 1){ //Reject 2 or more arguments
   log.error('Too many arguments');
   log.info('',usage);
   exit(1);
-} else{
+} else { //Accept one argument
   var cmds = exec(gitClone + cd + npmInstall);
   cli.spinner('Generating...');
   cmds.stdout.on('data', function(data){
@@ -44,14 +43,14 @@ if (!args.length){
   var installSuccess = 'Installation successful.';
   var installFailed = 'Installation failed.';
   cmds.on('exit', function(code){
-    cli.spinner('Working.. done!', true); 
+    cli.spinner('Working.. done!', true);
     switch(code){
-      case 0: 
-        log.info('OK',installSuccess); 
+      case 0:
+        log.info('OK', installSuccess);
         exit(0);
         break;
-      default: 
-        log.error('ERROR',installFailed);
+      default:
+        log.error('ERROR code:'+code, installFailed);
         exit(1);
     }
   });

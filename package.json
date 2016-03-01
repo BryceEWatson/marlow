@@ -20,6 +20,9 @@
   },
   "homepage": "https://github.com/bryceewatson/marlow-tools#readme",
   "dependencies": {
-    "open": "0.0.5"
+    "cli": "^0.11.1",
+    "npmlog": "^2.0.2",
+    "open": "0.0.5",
+    "shelljs": "^0.6.0"
   }
 }
