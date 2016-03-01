@@ -2,6 +2,12 @@
 
 var cli = require('cli');
 var exec = require('child_process').exec;
+
+var express = require("express");
+var app = module.exports = express();
+
+var findPort = require('find-open-port');
+var open = require('open');
 var shelljs = require('shelljs/global');
 var util = require('util');
 
@@ -21,10 +27,11 @@ var usage = 'Usage: marko generate [projectName]';
 var gitClone = 'git clone '+repoRoot+projectName+' && ';
 var cd = 'cd '+projectName+' && ';
 var npmInstall = 'npm install';
-
+var installSuccess = 'Installation successful.';
+var installFailed = 'Installation failed.';
+var exitCode;
 
 if (!args.length){  //Open a web browser window.
-  var open = require('open');
   open('http://www.markojs.com');
   exit(1);
 } else if(args.length > 1){ //Reject 2 or more arguments
@@ -40,18 +47,22 @@ if (!args.length){  //Open a web browser window.
   cmds.stderr.on('data', function(data){
     log.info('',data);
   });
-  var installSuccess = 'Installation successful.';
-  var installFailed = 'Installation failed.';
   cmds.on('exit', function(code){
     cli.spinner('Working.. done!', true);
     switch(code){
       case 0:
         log.info('OK', installSuccess);
-        exit(0);
+        findPort().then(port => {
+          app.listen(port);
+          log.info('', 'Listening on port'+port);
+          open('http://localhost:'+port);
+          exit(0);
+        });
         break;
       default:
         log.error('ERROR code:'+code, installFailed);
         exit(1);
     }
   });
+
 }
