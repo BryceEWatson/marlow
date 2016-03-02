@@ -1,24 +1,19 @@
 #!/usr/bin/env node
 
-var cli = require('cli');
-var exec = require('child_process').exec;
 
 var express = require("express");
 var app = module.exports = express();
 
+var log = require('npmlog');
+log.enableColor();
+
+var cli = require('cli');
+var exec = require('child_process').exec;
 var findPort = require('find-open-port');
 var open = require('open');
 var process = require('process');
 var shelljs = require('shelljs/global');
 var util = require('util');
-
-var log = require('npmlog');
-log.enableColor();
-
-if(!which('git')){
-  echo('This package requires git');
-  exit(1);
-}
 
 var args = process.argv.slice(2);
 var projectName = args[0];
@@ -34,11 +29,16 @@ var installFailed = 'Installation failed.';
 var cmd = gitClone+cd+npmInstall;
 
 function onExecOut(data){
-  log.info('',data);
+  log.info(data);
 }
 
 function sayHello(req,res){
   res.send('Hello World!');
+}
+
+if(!which('git')){
+  log.error('This package requires git');
+  exit(1);
 }
 
 if (!args.length){  //Open a web browser window.
@@ -50,11 +50,17 @@ if (!args.length){  //Open a web browser window.
   exit(1);
 } else { //Accept one argument
   var execute = exec(cmd);
-  cli.spinner('Generating...');
+  //cli.spinner('Generating...');
+  var Spinner = require('cli-spinner').Spinner;
+  var spinner = new Spinner('%s Generating..  ');
+  spinner.setSpinnerString(13); //pick number between 1-20
+  spinner.start();
+
   execute.stdout.on('data', onExecOut);
   execute.stderr.on('data', onExecOut);
   execute.on('exit', function onExecExit(code){
-    cli.spinner('Working.. done!', true);
+    //cli.spinner('Working.. done!', true);
+    spinner.stop(false);
     switch(code){
       case 0:
         log.info('OK', installSuccess);
