@@ -57,6 +57,9 @@ if (!args.length){  //Open a web browser window.
         findPort().then(port => {
           process.chdir(projectName);
           app.listen(port);
+          app.get('/', function (req, res) {
+            res.send('Hello World!');
+          });
           log.info('', 'Listening on port '+port);
           open('http://localhost:'+port);
         });
