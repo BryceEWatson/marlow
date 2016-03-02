@@ -8,6 +8,7 @@ var app = module.exports = express();
 
 var findPort = require('find-open-port');
 var open = require('open');
+var process = require('process');
 var shelljs = require('shelljs/global');
 var util = require('util');
 
@@ -29,7 +30,8 @@ var cd = 'cd '+projectName+' && ';
 var npmInstall = 'npm install';
 var installSuccess = 'Installation successful.';
 var installFailed = 'Installation failed.';
-var exitCode;
+var installFailed = 'Installation failed.';
+
 
 if (!args.length){  //Open a web browser window.
   open('http://www.markojs.com');
@@ -53,10 +55,10 @@ if (!args.length){  //Open a web browser window.
       case 0:
         log.info('OK', installSuccess);
         findPort().then(port => {
+          process.chdir(projectName);
           app.listen(port);
-          log.info('', 'Listening on port'+port);
+          log.info('', 'Listening on port '+port);
           open('http://localhost:'+port);
-          exit(0);
         });
         break;
       default:
@@ -64,5 +66,4 @@ if (!args.length){  //Open a web browser window.
         exit(1);
     }
   });
-
 }
