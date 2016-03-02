@@ -31,7 +31,15 @@ var npmInstall = 'npm install';
 var installSuccess = 'Installation successful.';
 var installFailed = 'Installation failed.';
 var installFailed = 'Installation failed.';
+var cmd = gitClone+cd+npmInstall;
 
+function onExecOut(data){
+  log.info('',data);
+}
+
+function sayHello(req,res){
+  res.send('Hello World!');
+}
 
 if (!args.length){  //Open a web browser window.
   open('http://www.markojs.com');
@@ -41,15 +49,11 @@ if (!args.length){  //Open a web browser window.
   log.info('',usage);
   exit(1);
 } else { //Accept one argument
-  var cmds = exec(gitClone + cd + npmInstall);
+  var execute = exec(cmd);
   cli.spinner('Generating...');
-  cmds.stdout.on('data', function(data){
-    log.info('',data);
-  });
-  cmds.stderr.on('data', function(data){
-    log.info('',data);
-  });
-  cmds.on('exit', function(code){
+  execute.stdout.on('data', onExecOut);
+  execute.stderr.on('data', onExecOut);
+  execute.on('exit', function onExecExit(code){
     cli.spinner('Working.. done!', true);
     switch(code){
       case 0:
@@ -57,9 +61,7 @@ if (!args.length){  //Open a web browser window.
         findPort().then(port => {
           process.chdir(projectName);
           app.listen(port);
-          app.get('/', function (req, res) {
-            res.send('Hello World!');
-          });
+          app.get('/', sayHello);
           log.info('', 'Listening on port '+port);
           open('http://localhost:'+port);
         });
