@@ -1,5 +1,5 @@
 {
-  "name": "marlow-tools",
+  "name": "marlow",
   "version": "1.0.0",
   "description": "A collection of tools to help you build in the marko-js, marko widget, and lasso stack.",
   "main": "index.js",
@@ -7,20 +7,23 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "bin": {
-    "marlow-tools": "bin/marlow-tools"
+    "marlow": "bin/marlow"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/bryceewatson/marlow-tools.git"
+    "url": "git+https://github.com/bryceewatson/marlow.git"
   },
   "author": "Bryce Watson <BryceEWatson@gmail.com>",
+  "contributors": [
+      "Kelvin Watson <KelvinCSWatson@gmail.com>"
+  ],
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/bryceewatson/marlow-tools/issues"
+    "url": "https://github.com/bryceewatson/marlow/issues"
   },
-  "homepage": "https://github.com/bryceewatson/marlow-tools#readme",
+  "homepage": "https://github.com/bryceewatson/marlow#readme",
   "dependencies": {
-    "cli": "^0.11.1",
+    "argly": "^1.0.0",
     "cli-spinner": "^0.2.4",
     "express": "^4.13.4",
     "find-open-port": "^1.0.0",
