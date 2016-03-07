@@ -1,0 +1,21 @@
+<lasso-page package-path="./browser.json"/>
+<!DOCTYPE html>
+<html lang="en" data-framework="marko">
+    <head>
+        <meta charset="utf-8"/>
+        <title>
+            Marko • HelloMarkoMVC
+        </title>
+        <lasso-head/>
+    </head>
+    <body>
+        <async-fragment data-provider=data.stateProvider var="appState">
+            <section id="hello-marko-app">
+                <app state=appState/>
+            </section>
+        </async-fragment>
+        <lasso-body/>
+        <init-widgets/>
+        <browser-refresh/>
+    </body>
+</html>

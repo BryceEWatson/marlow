@@ -1,3 +1,4 @@
+var serverPrefix = '../../';
 var exec = require('child_process').exec;
 var Spinner = require('cli-spinner').Spinner;
 var config = require('../util/config.js');
@@ -26,12 +27,15 @@ module.exports = {
         }
         return cmd;
     },
-    cloneAndInstall: function(projectName) {
-        return this.gitClone(projectName, config.tmpDir) + ' && '
-            + this.mkdir(projectName) + ' && '
+    cloneAndInstall: function(options) {
+        var projectName = options.generate;
+        var destination = options.destination || projectName;
+        return this.rmDir(config.tmpDir) + '; '
+            + this.gitClone(projectName, config.tmpDir) + ' && '
+            + this.mkdir(destination) + ' && '
             + this.cd(config.tmpDir) + ' && '
-            + this.archiveAndUnpack('../' + projectName) + ' && '
-            + this.cd('../' + projectName) + ' && '
+            + this.archiveAndUnpack('../' + destination) + ' && '
+            + this.cd('../' + destination) + ' && '
             + this.npmInstall + ' && '
             + this.rmDir('../' + config.tmpDir);
     },

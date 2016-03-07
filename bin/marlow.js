@@ -1,11 +1,11 @@
 #!/usr/bin/env node
 /*jslint node: true */
 
-var commands = require('../commands/commands.js');
-var config = require('../util/config');
-var server = require('../server/server.js');
+var commands = require('../src/commands/commands.js');
+var config = require('../src/util/config');
 var shelljs = require('shelljs/global');
 var open = require('open');
+var path = require('path');
 var process = require('process');
 var log = require('npmlog');
 log.enableColor();
@@ -39,6 +39,10 @@ var options = require('argly')
         '--start -s': {
             type: 'boolean',
             description: 'Start the server after generate'
+        },
+        '--destination --dest -d': {
+            type: 'string',
+            description: 'Custom destination folder'
         }
     })
     .usage('Usage: $0 [options]')
@@ -61,11 +65,10 @@ var options = require('argly')
 
 function marlow(options) {
     if (!options || !options.generate) {
-        server.start(function (port) {
-            open('http://localhost:' + port);
-        });
+        //start web interface
+        commands.execute(commands.cd(path.join(__dirname, '../src/server')) + ' && ' + commands.npmInstall + ' && ' + commands.npmStart);
     } else if (options.generate) {
-        commands.execute(commands.cloneAndInstall(options.generate), function (res) {
+        commands.execute(commands.cloneAndInstall(options), function (res) {
             var status = res.success ? 'Success' : 'Failed';
             log.info(status, 'Clone and install with code ' + res.code);
             if (res.success && options.start) {
