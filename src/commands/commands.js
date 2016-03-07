@@ -2,7 +2,6 @@ var clui = require('clui');
 var colors = require('colors/safe');
 var config = require('../util/config.js');
 var exec = require('child_process').exec;
-var log = require('color-log');
 var process = require('process');
 
 Spinner = clui.Spinner;
