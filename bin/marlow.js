@@ -1,22 +1,21 @@
 #!/usr/bin/env node
 /*jslint node: true */
 
+var colors = require('colors/safe');
 var commands = require('../src/commands/commands.js');
 var config = require('../src/util/config');
-var shelljs = require('shelljs/global');
 var open = require('open');
 var path = require('path');
 var process = require('process');
-var log = require('npmlog');
-log.enableColor();
-var path = require('path');
+var shelljs = require('shelljs/global');
+
 var filename = path.basename(__filename);
 
 var ACCEPTED_USER_CMDS = [ 'generate'];
 var START_OPTIONS = ['-s', '--start'];
 
 if (!which('git')) {
-    log.error(filename, 'This package requires git');
+    log.error(filename+'This package requires git');
     exit(1);
 }
 
@@ -70,7 +69,7 @@ function marlow(options) {
     } else if (options.generate) {
         commands.execute(commands.cloneAndInstall(options), function (res) {
             var status = res.success ? 'Success' : 'Failed';
-            log.info(status, 'Clone and install with code ' + res.code);
+            console.log(colors.green(status+': Clone and install with code ' + res.code));
             if (res.success && options.start) {
                 commands.execute(commands.cd(options.generate) + ' && ' + commands.npmStart + ' &', function (res) {
                     //TODO: Find a better way to do this!

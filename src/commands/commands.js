@@ -1,13 +1,23 @@
-var serverPrefix = '../../';
-var exec = require('child_process').exec;
-var Spinner = require('cli-spinner').Spinner;
+var clui = require('clui');
+var colors = require('colors/safe');
 var config = require('../util/config.js');
-var log = require('npmlog');
-log.enableColor();
+var exec = require('child_process').exec;
+var log = require('color-log');
 var process = require('process');
 
+Spinner = clui.Spinner;
+var spinner = new Spinner('');
+
 function onExecOut(data){
-  log.info(data);
+  spinner.stop(); //erases spinner
+  process.stdout.write(colors.cyan(data));
+  spinner.start();
+}
+
+function onExecErr(data){
+  spinner.stop();
+  process.stdout.write(colors.green(data));
+  spinner.start();
 }
 
 module.exports = {
@@ -45,14 +55,11 @@ module.exports = {
     execute: function(command, callback) {
         log.info('executing: ' + command);
         var execute = exec(command);
-        var spinner = new Spinner('%s');
-        spinner.setSpinnerString(13); //pick number between 1-20
         spinner.start();
-
         execute.stdout.on('data', onExecOut);
-        execute.stderr.on('data', onExecOut);
+        execute.stderr.on('data', onExecErr);
         execute.on('exit', function onExecExit(code){
-          spinner.stop(false);
+          spinner.stop();
           switch(code){
             case 0:
               if(callback) {
