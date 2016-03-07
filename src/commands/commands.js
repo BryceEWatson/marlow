@@ -52,7 +52,7 @@ module.exports = {
         return 'git archive master | tar -x -C ' + outputDir;
     },
     execute: function(command, callback) {
-        log.info('executing: ' + command);
+        console.log(colors.green('executing: ' + command));
         var execute = exec(command);
         spinner.start();
         execute.stdout.on('data', onExecOut);
