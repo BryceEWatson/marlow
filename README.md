@@ -3,7 +3,7 @@ A collection of tools to help you build in the marko-js, marko widget, and lasso
 
 # installation
 ```sh
-$ git clone git@github.com:bryceewatson/marlow`
+$ git clone git@github.com:bryceewatson/marlow
 $ cd marlow && npm link
 ```
 
