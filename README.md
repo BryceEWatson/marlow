@@ -26,10 +26,10 @@ $ marlow --generate my-project --start
 
 # getting started
 
-1. Get marlow-tools:
+1. Get marlow:
 
   ```sh
-  $ git clone git@github.com:bryceewatson/marlow`
+  $ git clone git@github.com:bryceewatson/marlow
   $ cd marlow && npm link
   ```
 
