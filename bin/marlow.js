@@ -33,22 +33,17 @@ var options = require('argly')
         },
         '--generate -g': {
             type: 'string',
-            description: 'Generate a sample project'
+            description: 'Generate a new starter project'
         },
         '--start -s': {
             type: 'boolean',
             description: 'Start the server after generate'
-        },
-        '--destination --dest -d': {
-            type: 'string',
-            description: 'Custom destination folder'
         }
     })
     .usage('Usage: $0 [options]')
     .example('Open the tools web menu (opens a web browser window)', '$0')
-    .example('See a list of project templates to generate from', '$0 --generate')
-    .example('Generate the todomvc-marko project. Optionally start the server when finished',
-        '$0 --generate todomvc-marko --start')
+    .example('Generate a new project my-project. Optionally start the server when finished',
+        '$0 --generate my-project --start')
     .validate(function (result) {
         if (result.help) {
             this.printUsage();
@@ -67,12 +62,12 @@ function marlow(options) {
         //start web interface
         commands.execute(commands.cd(path.join(__dirname, '../src/server')) + ' && ' + commands.npmInstall + ' && ' + commands.npmStart);
     } else if (options.generate) {
+        //generate from base project
         commands.execute(commands.cloneAndInstall(options), function (res) {
             var status = res.success ? 'Success' : 'Failed';
             console.log(colors.green(status+': Clone and install with code ' + res.code));
             if (res.success && options.start) {
                 commands.execute(commands.cd(options.generate) + ' && ' + commands.npmStart + ' &', function (res) {
-                    //TODO: Find a better way to do this!
                     setTimeout(function() {
                         open('http://localhost:' + 8080);
                     }, 3000);

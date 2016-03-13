@@ -1,5 +1,6 @@
 module.exports = {
     repoRoot: 'https://github.com/bryceewatson/',
+    baseProject: 'hello-marko',
     tmpDir: 'marlow-tmp',
     messages: {
         usage: 'Usage: marko generate [projectName]',

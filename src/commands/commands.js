@@ -37,14 +37,14 @@ module.exports = {
         return cmd;
     },
     cloneAndInstall: function(options) {
+        var baseProject = config.baseProject;
         var projectName = options.generate;
-        var destination = options.destination || projectName;
         return this.rmDir(config.tmpDir) + '; '
-            + this.gitClone(projectName, config.tmpDir) + ' && '
-            + this.mkdir(destination) + ' && '
+            + this.gitClone(baseProject, config.tmpDir) + ' && '
+            + this.mkdir(projectName) + ' && '
             + this.cd(config.tmpDir) + ' && '
-            + this.archiveAndUnpack('../' + destination) + ' && '
-            + this.cd('../' + destination) + ' && '
+            + this.archiveAndUnpack('../' + projectName) + ' && '
+            + this.cd('../' + projectName) + ' && '
             + this.npmInstall + ' && '
             + this.rmDir('../' + config.tmpDir);
     },
