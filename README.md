@@ -27,12 +27,13 @@ $ marlow --generate my-project --start
 # getting started
 
 1. Get marlow-tools:
-```
-$ git clone git@github.com:bryceewatson/marlow`
-$ cd marlow && npm link
-```
 
+    ```
+    $ git clone git@github.com:bryceewatson/marlow`
+    $ cd marlow && npm link
+    ```
 2. Create your project:
-```
-$ marlow --generate my-guestbook [--start]  #--start starts the server for you
-```
+
+    ```
+    $ marlow --generate my-guestbook [--start]  #--start starts the server for you
+    ```
