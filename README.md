@@ -61,7 +61,7 @@ Click [here](http://markojs.com/docs/marko-widgets/) to learn more about marko w
 
   ```json
   {
-    "@lat": "string"
+    "@lat": "string",
     "@lng": "sting"
   }
   ```
@@ -204,14 +204,14 @@ Click [here](http://markojs.com/docs/marko-widgets/) to learn more about marko w
   ```
 18. You may be wondering why we pass the location data through multiple layers of widgets. In a larger application, a main app widget could be used to manage multiple UI components and associated data. In app-main's index.js file, modify the `getInitialState` method to return:
 
-  ```json
+  ```js
   {
     location: input.location
   }
   ```  
 19. Modify the `getTemplateData` method to return:
 
-  ```json
+  ```js
   {
     location: state.location
   }
