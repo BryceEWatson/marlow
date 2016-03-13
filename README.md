@@ -230,9 +230,9 @@ Click [here](http://markojs.com/docs/marko-widgets/) to learn more about marko w
   ```
 Finally, we can update our app-location-display widget to render the latitude and longitude to the page:
 
-21. [Optional] Let's put the finishing touches on our application. In components/app-header, change the text within the <h1> tags to "International Space Station Location Tracker".
+21. [Optional] Let's put the finishing touches on our application. In components/app-header, change the text within the `<h1>` tags to "International Space Station Location Tracker".
 
-21. [Optional] To make our font look "spacey,", go to src/pages/home/template.marko and add the font style:
+22. [Optional] To make our font look "spacey,", go to src/pages/home/template.marko and add the font style:
 
   ```html
   <link href="https://fonts.googleapis.com/css?family=Orbitron" rel="stylesheet" type="text/css">
@@ -256,3 +256,4 @@ Finally, we can update our app-location-display widget to render the latitude an
     ]
   }
   ```
+23. [Optional] Since we do not need the app-hello-message and app-live-textbox components, we can delete these from the components folder.
