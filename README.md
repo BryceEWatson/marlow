@@ -76,7 +76,7 @@ Click [here](http://markojs.com/docs/marko-widgets/) to learn more about marko w
 
 6. Similarly, in `getTemplateData`, change `name: state.name` to `lat: state.lat` and `welcomeMsg: state.welcomeMsg` to `lng: state.lng`.
 
-7. Congratulations, you've created your first marko widget! Now, let's add some data. For our project, we're going to be using the "Open Notify" API to get the current location of the [International Space Station](http://open-notify.org/Open-Notify-API/ISS-Location-Now/).
+7. Congratulations, you've created your first marko widget! Now, let's add some data. For our project, Rwe're going to be using the "Open Notify" API to get the current location of the [International Space Station](http://open-notify.org/Open-Notify-API/ISS-Location-Now/).
 
 8. In the Copy the hello folder into a location folder:
 
@@ -150,9 +150,9 @@ Click [here](http://markojs.com/docs/marko-widgets/) to learn more about marko w
       return this.initialServerSyncPromise;
   },
   ```
-  Whenever App.getLocation is called, the locationService is called, and the response is used to update the state object.
+  Whenever `App.getLocation` is called, the `locationService` is called, and the response is used to update the state object.
 
-13. In AppState.js, let's initialize the AppState method and set our default values. Remove
+13. In AppState.js, let's initialize the AppState method and set our default values. Replace
 
   ```js
   this.name = state.name || 'World';
@@ -163,7 +163,7 @@ Click [here](http://markojs.com/docs/marko-widgets/) to learn more about marko w
   ```js
   this.location = state.location || {lat: 0, lng: 0};
   ```
-  When AppState's set method is called, a change event is triggered, which causes the widgets to be rerendered. We will see how the widgets are rerendered next.
+  When AppState's `set` method is called, a change event is triggered, which causes the widgets to be rerendered. We will see how the widgets are rerendered next.
 
 14. In the root directory's index.js file, replace
 
