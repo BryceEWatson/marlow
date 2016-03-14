@@ -1,6 +1,10 @@
 # marlow
 A collection of tools to help you build in the marko-js, marko widget, and lasso stack.
 
+For more information please visit the following resources:
+   - [State App View (SAV)](https://github.com/marko-js-samples/todomvc-marko#the-sav-architecture)
+   - [marko-js & marko-widgets](http://markojs.com/)
+
 # installation
 ```sh
 $ git clone git@github.com:bryceewatson/marlow
