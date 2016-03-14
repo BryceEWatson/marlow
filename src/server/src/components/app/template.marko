@@ -1,5 +1,19 @@
-<div w-bind>
-    <app-header/>
-    <app-main name=data.name welcomeMsg=data.welcomeMsg/>
-    <app-footer/>
+<div class="splash-container">
+    <div class="splash">
+        <h1 class="splash-head">Marlow Tools</h1>
+        <p class="splash-subhead">
+            A collection of tools to help you build in the marko-js, marko widget, and lasso stack.
+        </p>
+        <p>
+            <a href="http://purecss.io" class="pure-button pure-button-primary">Get Started</a>
+        </p>
+    </div>
 </div>
+
+<section id="app-main" w-bind>
+    <app-header/>
+    <div class="content-wrapper">
+        <app-main name=data.name welcomeMsg=data.welcomeMsg/>
+        <app-footer/>
+    </div>
+</section>

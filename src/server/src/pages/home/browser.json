@@ -2,6 +2,8 @@
     "dependencies": [
         "require: jquery",
         "require: marko-widgets",
-        "src/components/app/browser.json"
+        "style.less",
+        "src/components/app/browser.json",
+        "pure-css/layouts/marketing.less"
     ]
 }
