@@ -13,7 +13,7 @@ $ cd marlow && npm link
 
 # usage
 
-To open the web ui
+To open the web ui (Note: web ui is still in progress)
 ```sh
 $ marlow
 ```
