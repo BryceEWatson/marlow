@@ -26,6 +26,8 @@ $ marlow --generate my-project --start
 
 # getting started
 
+This guide will help you learn the marko-js, marko-widget, and lasso stack. By the end you will have a [Space Station Tracker](https://github.com/BryceEWatson/space-station-tracker) website which updates its latitude and longitude from the [Open API Endpoint](http://open-notify.org/Open-Notify-API/ISS-Location-Now/).
+
 1. Get marlow:
 
   ```sh
