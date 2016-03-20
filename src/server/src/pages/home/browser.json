@@ -3,7 +3,7 @@
         "require: jquery",
         "require: marko-widgets",
         "style.less",
-        "src/components/app/browser.json",
+        "src/server/src/components/app/browser.json",
         "pure-css/layouts/marketing.less"
     ]
 }

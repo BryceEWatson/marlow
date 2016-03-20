@@ -4,7 +4,8 @@
   "description": "A collection of tools to help you build in the marko-js, marko widget, and lasso stack.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+      "start": "node marlow-cleanup.js",
+      "test": "echo \"Error: no test specified\" && exit 1"
   },
   "bin": {
     "marlow": "bin/marlow"
@@ -33,6 +34,7 @@
     "compression": "^1.2.0",
     "express": "^4.9.4",
     "find-open-port": "^1.0.0",
+    "glob": "^7.0.3",
     "jquery": "^2.1.3",
     "lasso": "^2.0.0",
     "lasso-less": "^2.0.6",

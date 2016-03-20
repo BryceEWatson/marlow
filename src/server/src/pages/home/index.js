@@ -1,5 +1,5 @@
 var template = require('./template.marko');
-var AppState = require('src/app/AppState');
+var AppState = require('../../app/AppState');
 
 module.exports = function(req, res) {
     res.setHeader('Content-Type', 'text/html; charset=utf-8');

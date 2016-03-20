@@ -1,6 +1,6 @@
 var inherit = require('raptor-util/inherit');
 var AppState = require('./AppState');
-var helloService = require('src/services/hello');
+var helloService = require('src/server/src/services/hello');
 
 /**
  * This is the "class" definition for our app. On the client-side

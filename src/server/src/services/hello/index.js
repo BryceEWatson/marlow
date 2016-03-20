@@ -1,3 +1,3 @@
-module.exports = require('src/util/service-helper').createService(
+module.exports = require('../../util/service-helper').createService(
     require('./routes'),
     require('./handlers'));

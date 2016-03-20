@@ -1,4 +1,4 @@
-var app = require('src/app');
+var app = require('../../app');
 
 module.exports = require('marko-widgets').defineComponent({
     template: require('./template.marko'),

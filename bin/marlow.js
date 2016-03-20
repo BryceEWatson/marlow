@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /*jslint node: true */
-
+require('app-module-path').addPath(require('path').join(__dirname, '..'));
 var colors = require('colors/safe');
 var commands = require('../src/commands/commands.js');
 var config = require('../src/util/config');
@@ -8,6 +8,7 @@ var open = require('open');
 var path = require('path');
 var process = require('process');
 var shelljs = require('shelljs/global');
+var server = require('../src/server');
 
 var filename = path.basename(__filename);
 
@@ -60,7 +61,8 @@ var options = require('argly')
 function marlow(options) {
     if (!options || !options.generate) {
         //start web interface
-        commands.execute(commands.cd(path.join(__dirname, '../src/server')) + ' && ' + commands.npmInstall + ' && ' + commands.npmStart);
+        // commands.execute(commands.cd(path.join(__dirname, '../src/server')));
+        server.start();
     } else if (options.generate) {
         //generate from base project
         commands.execute(commands.cloneAndInstall(options), function (res) {
