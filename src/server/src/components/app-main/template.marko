@@ -1,65 +1,66 @@
 <div class="content" w-bind>
-    <h2 class="content-head is-center">Select a tool</h2>
-    <div class="pure-g">
+  <h2 class="content-head is-center">Select a tool</h2>
+  <ul class="accordion">
+    <li><input type="checkbox" checked><i></i>
+      <div class="pure-g">
         <div class="l-box pure-u-1">
-            <div class="pure-u-2-5">
-                <h3 class="content-subhead">
-                    <i class="fa fa-rocket"></i>
-                    Download sample project
-                </h3>
-                <p>
-                    Clone and run one of the available projects.
-                </p>
-            </div>
-            <form class="pure-form" w-onsubmit="downloadSampleProject">
-                <div class="pure-u-2-5">
-                        <fieldset>
-                            <legend>Choose a sample project & destination</legend>
-                            <div class="pure-u-1-2">
-                                <select id="samples" name="samples" required>
-                                    <option value="-1" selected disabled>select</option>
-                                    <option value="hello-marko">hello-marko</option>
-                                    <option value="todomvc-marko">todomvc-marko</option>
-                                    <option value="space-station-tracker">space-station-tracker</option>
-                                </select>
-                            </div>
-                            <div class="pure-u-1-2">
-                                <input type="text" name="directory" value="${data.mainData.currentDir}"/>
-                                <label for="start"><input id="start" name="start" type="checkbox"/> Start server</label>
-                            </div>
-                        </fieldset>
-                </div>
-                <div class="pure-u-1-5">
-                    <button type="submit" class="pure-button pure-button-primary">Download</button>
-                </div>
-            </form>
+          <h3 class="content-subhead">
+            Download sample project</h3>
+          Clone and run one of the available projects.
         </div>
+      </div>
+      <section class="pure-g">
+        <form class="pure-form l-box" w-onsubmit="downloadSampleProject">
+          <input type="text" name="directory" value="${data.mainData.currentDir}" style="width:auto" autofocus onfocus="this.value=this.value;" required>
+          <select id="samples" name="samples" required>
+            <option value="-1" selected disabled>Select Project</option>
+            <option value="hello-marko">hello-marko</option>
+            <option value="todomvc-marko">todomvc-marko</option>
+            <option value="space-station-tracker">space-station-tracker</option>
+          </select>
+          <label for="start" class="pure-checkbox" style="letter-spacing:0em">
+            <input id="start" name="start" type="checkbox"/>Start server
+          </label>
+          <button type="submit" class="pure-button pure-button-primary">Download</button>
+        </form>
+      </section>
+    </li>
+
+    <li><input type="checkbox" checked>
+      <div class="pure-g">
         <div class="l-box pure-u-1">
-            <h3 class="content-subhead">
-                <i class="fa fa-mobile"></i>
-                Generate new project
-            </h3>
-            <p>
-                Start a new project using the hello-marko sample project as a baseline.
-            </p>
+          <h3 class="content-subhead"><i class="fa fa-mobile"></i>Generate new project</h3>
+          Start a new project using the hello-marko sample project as a baseline.
         </div>
+      </div>
+      <section class="pure-u-1 l-box">
+        Lorem
+      </section>
+    </li>
+
+    <li><input type="checkbox" checked>
+      <div class="pure-g">
         <div class="l-box pure-u-1">
-            <h3 class="content-subhead">
-                <i class="fa fa-th-large"></i>
-                Generate new UI component
-            </h3>
-            <p>
-                Adds a UI component to your project.
-            </p>
+          <h3 class="content-subhead">
+            <i class="fa fa-th-large"></i>Generate new UI component</h3>
+              <p>Adds a UI component to your project.</p>
         </div>
+      </div>
+      <section class="pure-u-1 l-box">
+        Lorem
+      </section>
+    </li>
+
+    <li><input type="checkbox" checked>
+      <div class="pure-g">
         <div class="l-box pure-u-1">
-            <h3 class="content-subhead">
-                <i class="fa fa-check-square-o"></i>
-                Generate test page
-            </h3>
-            <p>
-                Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque elementum.
-            </p>
+          <h3 class="content-subhead"><i class="fa fa-check-square-o"></i>Generate test page</h3>
+          <p>Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque elementum.</p>
         </div>
-    </div>
+      </div>
+      <section class="pure-u-1 l-box">
+        Lorem
+      </section>
+    </li>
+  </ul>
 </div>
