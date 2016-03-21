@@ -60,10 +60,10 @@ var options = require('argly')
 
 function marlow(options) {
     if (!options || !options.generate) {
+        //change current working directory to match web root.
+        process.chdir(path.join(__dirname, '..'));
         //start web interface
-        commands.execute(commands.cd(path.join(__dirname, '..')), function() {
-            server.start();
-        });
+        server.start();
     } else if (options.generate) {
         //generate from base project
         commands.execute(commands.cloneAndInstall(options), function (res) {
