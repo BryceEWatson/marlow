@@ -51,7 +51,7 @@ module.exports = {
 
 
         require('./routes').addRoutes(app);
-        require('./src/services/hello').addRoutes(app);
+        require('./src/services/tools').addRoutes(app);
 
         app.use(require('./src/pages/error'));
 

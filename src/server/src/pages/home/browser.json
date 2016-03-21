@@ -4,6 +4,7 @@
         "require: marko-widgets",
         "style.less",
         "src/server/src/components/app/browser.json",
+        "src/server/src/components/app-header/browser.json",
         "pure-css/layouts/marketing.less"
     ]
 }

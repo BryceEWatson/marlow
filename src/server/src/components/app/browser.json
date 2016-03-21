@@ -1,5 +1,6 @@
 {
     "dependencies": [
-        "require: ./index"
+        "require: ./index",
+        "../app-header/browser.json"
     ]
 }

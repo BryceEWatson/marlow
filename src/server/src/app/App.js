@@ -1,6 +1,6 @@
 var inherit = require('raptor-util/inherit');
 var AppState = require('./AppState');
-var helloService = require('src/server/src/services/hello');
+var toolsService = require('src/server/src/services/tools');
 
 /**
  * This is the "class" definition for our app. On the client-side
@@ -52,21 +52,30 @@ App.prototype = {
      * and updates the state.
      */
     getWelcomeMsg: function() {
+        // var self = this;
+        //
+        // this.serverSyncPromise = new Promise(function(resolve, reject) {
+        //     helloService.getWelcomeMsg({}, function(err, data) {
+        //         if (err) {
+        //             return reject(err);
+        //         }
+        //         var welcomeMsg = data.welcomeMsg;
+        //         // Add the welcome message to the state.
+        //         // A change event will be emitted.
+        //         self.state.set('welcomeMsg', welcomeMsg);
+        //         resolve();
+        //     });
+        // });
+        // return this.initialServerSyncPromise;
+    },
+    downloadSampleProject: function(args) {
         var self = this;
 
         this.serverSyncPromise = new Promise(function(resolve, reject) {
-            helloService.getWelcomeMsg({}, function(err, data) {
-                if (err) {
-                    return reject(err);
-                }
-                var welcomeMsg = data.welcomeMsg;
-                // Add the welcome message to the state.
-                // A change event will be emitted.
-                self.state.set('welcomeMsg', welcomeMsg);
-                resolve();
+            toolsService.downloadSampleProject(args, function(err, data) {
+                console.log('DOWNLOAD COMPLETE!!');
             });
         });
-        return this.initialServerSyncPromise;
     },
 
     getState: function() {

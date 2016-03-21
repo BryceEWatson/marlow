@@ -37,7 +37,7 @@ module.exports = {
         return cmd;
     },
     cloneAndInstall: function(options) {
-        var baseProject = config.baseProject;
+        var baseProject = options.gitProject || config.baseProject;
         var projectName = options.generate;
         return this.rmDir(config.tmpDir) + '; '
             + this.gitClone(baseProject, config.tmpDir) + ' && '

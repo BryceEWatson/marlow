@@ -7,11 +7,9 @@ module.exports = function(req, res) {
     template.render({
             stateProvider: function stateProvider(callback) {
                 //Optional: Add server-side service calls on initial page load.
-                var appState = new AppState({
-                    name: 'World!'
+                require('src/server/src/services/tools/handlers.js').startup({}, function(status, data) {
+                    callback(null, data);
                 });
-
-                callback(null, appState);
             }
         },
         res);

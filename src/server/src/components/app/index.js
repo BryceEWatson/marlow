@@ -8,12 +8,10 @@ module.exports = require('marko-widgets').defineComponent({
         return input.state;
     },
     getTemplateData: function(state, input) {
-        var name = state.name;
-        var welcomeMsg = state.welcomeMsg;
+        var currentDir = state.currentDir;
 
         return {
-            name: name,
-            welcomeMsg: welcomeMsg
+            currentDir: currentDir
         };
     },
     init: function() {
